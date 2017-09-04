@@ -1,24 +1,33 @@
-﻿using Prism.Unity;
-using PrismStarWarsApp.Views;
-using Xamarin.Forms;
+﻿// <copyright file="App.xaml.cs" company="PlaceholderCompany">
+// Copyright (c) PlaceholderCompany. All rights reserved.
+// </copyright>
 
 namespace PrismStarWarsApp
 {
+    using Prism.Unity;
+    using PrismStarWarsApp.Views;
+    using Xamarin.Forms;
+
     public partial class App : PrismApplication
     {
-        public App(IPlatformInitializer initializer = null) : base(initializer) { }
+        public App(IPlatformInitializer initializer = null)
+            : base(initializer)
+        {
+        }
 
         protected override void OnInitialized()
         {
-            InitializeComponent();
+            this.InitializeComponent();
 
-            NavigationService.NavigateAsync("NavigationPage/MainPage?title=Hello%20from%20Xamarin.Forms");
+            this.NavigationService.NavigateAsync("NavigationPage/MainPage");
         }
 
         protected override void RegisterTypes()
         {
-            Container.RegisterTypeForNavigation<NavigationPage>();
-            Container.RegisterTypeForNavigation<MainPage>();
+            this.Container.RegisterTypeForNavigation<NavigationPage>();
+            this.Container.RegisterTypeForNavigation<MainPage>();
+            this.Container.RegisterTypeForNavigation<PersonPage>();
+            this.Container.RegisterTypeForNavigation<PeoplePage>();
         }
     }
 }
